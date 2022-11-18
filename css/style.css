@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
+    body{
+        background-image: url(../image/back-grond/my-website-background.webp);
+        font-size: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        backdrop-filter: blur(6px);
+    }
+
+    header{
+        font-family: 'Fredoka One';
+    }
+
+    section{
+        font-family: 'Fredoka', sans-serif;
+    }
+
+    body, section, header{
+        color: rgb(231, 230, 230);
+    }
+
+    /* table{ */
+        /* The future Css */
+    /* } */
+    
+    td{
+        width: 100px;
+        height: 100px;
+    }
+
+    .icon-deadline-cross-round{
+        max-width: 100px;
+    }
+
+    .Titel{text-shadow: 3px 3px 2px rgb(20, 20, 20);}
+    .Winer{color: gold; text-shadow: 0 0 3px orange ,0 0 10px goldenrod;}
