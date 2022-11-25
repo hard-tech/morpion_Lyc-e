@@ -24,15 +24,46 @@ function ResetName(){
   }
 }
 
+// 1. Demmander Si on veux mettre un nom aux joueur (Vérif si nom != null)
+// 2.   si oui Récupérer et mettre les noms aux jouers (Si 1 des deux vide mettre Player X par défaux).
+// 3.   Réponse = false mettre Player 1 & Player 2 par défaux
+// 4. Supprimer les var lolcalstokaged ;)
+
+
 var Player1 = localStorage.Player1;
 var Player2 = localStorage.Player2;
 
-if(document.getElementById('p1').value == "" && localStorage.NameSaved1 != 'true'){
-  var Player1 = "Player 1";
+// alert(localStorage.DefaultName)
+if(!localStorage.NameSaved1 && !localStorage.NameSaved2 && !localStorage.DefaultName ){
+
+  var SetName = confirm("Les noms des joueur sont vide voulez-vous en mettre par défaux, vous pourez les changer après ?")
+  if(SetName){
+    Player1 = prompt("Quelle nom voulez vous mettre pour le Joueur 1 ? ");
+    if(Player1 == "" || Player1 == null){Player1 = "Player 1"}
+    Player2 = prompt("Quelle nom voulez vous mettre pour le Joueur 2 ? ");
+    if(Player2 == "" || Player2 == null){Player2 = "Player 2"}
+  
+    localStorage['Player1'] = Player1
+    localStorage['Player2'] = Player2
+
+    alert(`Les noms par défaux des joueurs serra, ${Player1} et ${Player2}`)
+
+    localStorage['DefaultName'] = false;
+  }
 }
-if(document.getElementById('p2').value == "" && localStorage.NameSaved2 != 'true'){
-  var Player2 = "Player 2";
+
+
+if(document.getElementById('p1').value == "" && !localStorage.NameSaved1 && !SetName && !localStorage.DefaultName){
+  // var NewName1 = prompt("Le Joueur 1 n'a pas de nom Voulez-vous en mettre un ? (si oui entrée le sinon laisser vide) ")
+  Player1 = "Player 1";
 }
+
+if(document.getElementById('p2').value == "" && !localStorage.NameSaved2 && !SetName && !localStorage.DefaultName){
+  // var NewName2 = prompt("Le Joueur 2 n'a pas de nom Voulez-vous en mettre un ? (si oui entrée le sinon laisser vide) ")
+  Player2 = "Player 2";
+}
+
+
 var finish = false;
 var finishSaveData = false;
 
@@ -103,12 +134,19 @@ function Game(Case){
     
     if(Turn == PlayerTurn[0] && !finish){
 
-      var Played = document.getElementById(Case).classList
+      // var Played = document.getElementById(Case).classList
+      // alert(Played)
       var Played = document.getElementById(Case).className.search('used')
       
-        if(Played >= 0){
+      if(document.getElementById(Case).classList[1] == "free"){
+        Turn = [PlayerTurn[1]];
+        document.getElementById('turn').innerText = Player2;
+      }
+
+      if(Played >= 0){
             alert("Vous ne pouvez pas utiliser cette case (elle est déjà prise) !")
         }else{
+          // alert("Cahge info")
             // alert("Libre !");
             document.getElementById(Case).innerHTML = '<img class="img-fluid" src="../image/icon/cross.png" alt="X">';
             document.getElementById(Case).classList.remove('free');
@@ -117,17 +155,28 @@ function Game(Case){
 
             animateCSS(Case, 'rubberBand');
         }
-        Turn = [PlayerTurn[1]];
-        document.getElementById('turn').innerText = Player2;
+      // alert(document.getElementById(Case).classList)
+      
+      // if(document.getElementById(Case).classList[1] == "free"){
+      //     Turn = [PlayerTurn[1]];
+      // }  
+
     }
     else if(Turn == PlayerTurn[1] && !finish){
 
-      var Played = document.getElementById(Case).classList
+      // var Played = document.getElementById(Case).classList
+      // alert(Played)
       var Played = document.getElementById(Case).className.search('used')
+      
+      if(document.getElementById(Case).classList[1] == "free"){
+        Turn = [PlayerTurn[0]];
+        document.getElementById('turn').innerText = Player1;
+      }  
 
-        if(Played >= 0){
+      if(Played >= 0){
             alert("Vous ne pouver pas utiliser cette case (elle est déjà prise) !")
         }else{
+          // alert("Cahge info")
             document.getElementById(Case).innerHTML = '<img class="img-fluid" src="../image/icon/circle.png" alt="O">';
             document.getElementById(Case).classList.remove('free');
             document.getElementById(Case).classList.add('used');
@@ -137,8 +186,13 @@ function Game(Case){
             element.style.setProperty('--animate-duration', '0.4s');
             animateCSS(Case, 'zoomIn');
         }
-        Turn = [PlayerTurn[0]];
-        document.getElementById('turn').innerText = Player1;
+      // alert(document.getElementById(Case).classList)
+
+      // if(document.getElementById(Case).classList[1] == "free"){
+      //   Turn = [PlayerTurn[0]];
+      // }  
+        
+
     }else{
       alert("C'est fini ! Vous ne pouvez pas continuer, mais vous pouvez rejouer !")
     }
