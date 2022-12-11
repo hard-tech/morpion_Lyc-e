@@ -31,6 +31,10 @@
         height: 100px;
     }
 
+    hr{
+        color: white;
+    }
+
     .icon-deadline-cross-round{
         max-width: 100px;
     }
