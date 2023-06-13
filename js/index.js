@@ -165,7 +165,7 @@ function Game(Case) {
     } else {
       // alert("Cahge info")
       // alert("Libre !");
-      document.getElementById(Case).innerHTML = '<img class="img-fluid" src="../image/icon/cross.png" alt="X">';
+      document.getElementById(Case).innerHTML = '<img class="img-fluid" src="./image/icon/cross.png" alt="X">';
       document.getElementById(Case).classList.remove('free');
       document.getElementById(Case).classList.add('used');
       document.getElementById(Case).classList.add(`Belong${Turn}`);
@@ -193,7 +193,7 @@ function Game(Case) {
       alert("Vous ne pouver pas utiliser cette case (elle est déjà prise) !")
     } else {
       // alert("Cahge info")
-      document.getElementById(Case).innerHTML = '<img class="img-fluid" src="../image/icon/circle.png" alt="O">';
+      document.getElementById(Case).innerHTML = '<img class="img-fluid" src="./image/icon/circle.png" alt="O">';
       document.getElementById(Case).classList.remove('free');
       document.getElementById(Case).classList.add('used');
       document.getElementById(Case).classList.add(`Belong${Turn}`);
