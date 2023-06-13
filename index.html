@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:locale" content="fr_EU" />
+
+    <meta property="og:type" content="webSite" />
+    <meta property="og:title" content="Morpion" />
+    <meta property="og:description" content="
+      Morpion pour les cours ! :)
+    " />
+    <meta property="og:url" content="#" />
+    <meta property="og:site_name" content="Morpion" />
+    <meta property="og:image" content="../image/icon/circle.png" />
+    <meta property="og:image:secure_url" content="../image/icon/circle.png" />
+    <meta name="copyright" content="© New-webTech Inc." />
+    
+
+      <!-- ### Link Google-font ### -->
+      <link rel="preconnect" href="https://fonts.googleapis.com"> 
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Baloo+Tammudu+2&family=Bubblegum+Sans&family=Cagliostro&family=East+Sea+Dokdo&family=Fredoka&family=Fredoka+One&family=Monoton&family=Nunito&family=Paprika&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    
+          <span id="link"></span>
+
+      <link rel="icon" type="image/png" href="https://eurobotech-4bafa.firebaseapp.com/img/ico/CD_plastron-inv.jpg" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+
+      <link rel="stylesheet" href="../css/style.css">
+      <!-- ### Animate css link ### -->     
+      
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="../image/icon/circle.png" />
+    <title>Morpion</title>
+</head>
+  <body>
+  
+    <header class="text-center p-4 font1">
+      <h1 class="Titel">My first morpion</h1>
+    </header>
+
+      <section class="p-5 d-flex justify-content-center flex-column align-items-center" onload="load()">
+        <h3>Veuillez renseigner vos noms : </h3>
+
+        <form class="my-4">
+          <div class="d-flex align-items-center m-4 flex-wrap justify-content-center">
+            <span class="mx-4 my-2">Please enter your name <b>Player 1</b> :</span>
+            <span class="d-flex">
+              <div id="t"><input id="p1" class="form-control" type="text" placeholder="Name for playerOne" aria-label="default input example"></div>
+              <button type="submit" class="btn btn-primary mx-3" onclick="SaveNamePlayer()">Confirm</button>
+              <button type="submit" class="btn btn-primary" onclick="WhoStart(Player1)">Starter</button>
+            </span>
+          </div>
+  
+          <div class="d-flex align-items-center m-4 flex-wrap justify-content-center">
+            <span class="mx-4 my-2">Please enter your name <b>Player 2</b> :</span>
+            <span class="d-flex">
+              <input id="p2" class="form-control" type="text" placeholder="Name for playerTwo" aria-label="default input example">
+              <button type="submit" class="btn btn-primary mx-3" onclick="SaveNamePlayer()">Confirm</button>
+              <button type="submit" class="btn btn-primary" onclick="WhoStart(Player2)">Starter</button>
+            </span>
+          </div>
+        </form>
+
+        <br>
+          <h4 id="info" class="my-3">C'est à toi <b><span id="turn"></span></b> de jouer !</h4>
+          <table id="finished" class="my-3">
+            <tbody>
+              <tr>
+                  <td id="1" onclick="Game('Case1_1')" class="p-4 border-4 border-light"><div id="Case1_1" class="icon-deadline-cross-round free"></div></td>
+                  <td id="2" onclick="Game('Case1_2')" class="p-4 border-4 border-light border-end border-start"><div id="Case1_2" class="icon-deadline-cross-round free"></div></td>
+                  <td id="3" onclick="Game('Case1_3')" class="p-4 border-4 border-light"><div id="Case1_3" class="icon-deadline-cross-round free"></div></td>
+              </tr>
+              <tr>
+                <td id="4" onclick="Game('Case2_1')" class="p-4 border-4 border-light border-top border-bottom"><div id="Case2_1" class="icon-deadline-cross-round free"></div></td>
+                <td id="5" onclick="Game('Case2_2')" class="p-4 border-4 border-light border"><div id="Case2_2" class="icon-deadline-cross-round free"></div></td>
+                <td id="6" onclick="Game('Case2_3')" class="p-4 border-4 border-light border-top border-bottom"><div id="Case2_3" class="icon-deadline-cross-round free"></div></td>
+              </tr>
+              <tr>
+                <td id="7" onclick="Game('Case3_1')" class="p-4 border-4 border-light"><div id="Case3_1" class="icon-deadline-cross-round free"></div></td>
+                <td id="8" onclick="Game('Case3_2')" class="p-4 border-4 border-light border-end border-start"><div id="Case3_2" class="icon-deadline-cross-round free"></div></td>
+                <td id="9" onclick="Game('Case3_3')" class="p-4 border-4 border-light"><div id="Case3_3" class="icon-deadline-cross-round free"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        <!-- <button type="button" onclick="Teste()" class="btn btn-primary mt-5 mb-2">Reset</button> -->
+        <div class="d-flex flex-row justify-content-center align-items-center align-content-center">
+          <button type="button" id="Restart" onclick="Restart()" class="btn my-4">Restart</button>
+          <button type="submit" class="btn btn-danger mx-3" onclick="ResetName()">Reset All Data</button>
+        </div>
+          <div id="HistoryScore" class="my-3 text-light">
+            <!-- <b>
+              il y a actuelement ${GamePlayed} qui on été jouer, les 3 meuilleurs sont : <br>  
+              <ul>
+                <div id="HistoryGame"></div>
+              </ul>
+            </b> -->
+          </div>
+        <!-- <button type="button" id="Reset" onclick="Reset()" class="btn btn-primary my-4">Reset Score</button> -->
+      </section>
+
+    <footer class="d-flex justify-content-center mt-3">
+      <b class="text-center text-light m-2">© 2022 Copyright by New-webTech  (Ahmad Jaber)</b>
+    </footer>
+
+  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="../js/index.js"></script>
+</html>
